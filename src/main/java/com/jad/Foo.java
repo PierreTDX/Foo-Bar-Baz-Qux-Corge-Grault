@@ -7,6 +7,7 @@ public class Foo {
     private final Bar bar;
     private final Qux qux;
     private final List<Baz> bazs = new ArrayList<>();
+    private final List<Grault> graults = new ArrayList<>();
 
     public Foo(final Bar bar) {
         this.bar = bar;
@@ -29,13 +30,14 @@ public class Foo {
         this.bazs.add(baz);
     }
 
-    // public List<Grault> getGraults() {
-    // throw new UnsupportedOperationException("Not implemented yet");
-    // }
+    public List<Grault> getGraults() {
+        return new ArrayList<>(graults);
+    }
 
-    // public void addGrault() {
-    // throw new UnsupportedOperationException("Not implemented yet");
-    // }
+    public void addGrault() {
+        Grault g = new Grault(this);
+        graults.add(g);
+    }
 
     // public Corge getCorge() {
     // throw new UnsupportedOperationException("Not implemented yet");

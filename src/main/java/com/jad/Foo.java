@@ -8,6 +8,7 @@ public class Foo {
     private final Qux qux;
     private final List<Baz> bazs = new ArrayList<>();
     private final List<Grault> graults = new ArrayList<>();
+    private Corge corge;
 
     public Foo(final Bar bar) {
         this.bar = bar;
@@ -39,11 +40,25 @@ public class Foo {
         graults.add(g);
     }
 
-    // public Corge getCorge() {
-    // throw new UnsupportedOperationException("Not implemented yet");
-    // }
+    public Corge getCorge() {
+        return corge;
+    }
 
-    // public void setCorge(final Corge firstCorge) {
-    // throw new UnsupportedOperationException("Not implemented yet");
-    // }
+    public void setCorge(Corge corge) {
+        if (this.corge != corge) {
+            // Détacher l'ancien Corge
+            if (this.corge != null) {
+                Corge old = this.corge;
+                this.corge = null;
+                old.setFoo(null);
+            }
+
+            // Attacher le nouveau Corge
+            this.corge = corge;
+            if (corge != null && corge.getFoo() != this) {
+                corge.setFoo(this);
+            }
+        }
+    }
+
 }

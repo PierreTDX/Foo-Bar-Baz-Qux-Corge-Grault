@@ -1,10 +1,12 @@
 package com.jad;
 
-// import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Foo {
     private final Bar bar;
     private final Qux qux;
+    private final List<Baz> bazs = new ArrayList<>();
 
     public Foo(final Bar bar) {
         this.bar = bar;
@@ -19,13 +21,13 @@ public class Foo {
         return qux;
     }
 
-    // public List<Baz> getBazs() {
-    // throw new UnsupportedOperationException("Not implemented yet");
-    // }
+    public List<Baz> getBazs() {
+        return new ArrayList<>(bazs); // retourne une copie
+    }
 
-    // public void addBaz(final Baz baz) {
-    // throw new UnsupportedOperationException("Not implemented yet");
-    // }
+    public void addBaz(final Baz baz) {
+        this.bazs.add(baz);
+    }
 
     // public List<Grault> getGraults() {
     // throw new UnsupportedOperationException("Not implemented yet");
